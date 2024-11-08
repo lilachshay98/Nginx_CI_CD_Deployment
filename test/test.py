@@ -16,7 +16,7 @@ def check_server(url, expected_status, expected_text=None):
 
 
 def main():
-    server1 = check_server("http://nginx_container:8080", 200, "Custom HTML response for server 1")
+    server1 = check_server("http://nginx_container:8080", 200, "Welcome to Server 1")
     server2 = check_server("http://nginx_container:8081", 404, "Error: Page not found on server 2")
     
     if server1 and server2:

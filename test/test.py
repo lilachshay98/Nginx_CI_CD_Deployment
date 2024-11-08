@@ -21,10 +21,10 @@ def main():
     
     if server1 and server2:
         with open("/output/succeeded", "w") as f:
-            f.write("Tests passed")
+            f.write("succeeded")
     else:
         with open("/output/fail", "w") as f:
-            f.write("Tests failed")
+            f.write("fail")
 
 
 if __name__ == "__main__":

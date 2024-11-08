@@ -1,0 +1,14 @@
+# version: '3'
+services:
+  nginx_container:
+    build: ./nginx
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+
+  test_container:
+    build: ./test
+    depends_on:
+      - nginx_container
+    volumes:
+      - ./output:/output

@@ -1,26 +1,16 @@
-name: Docker Build and Test
-
-on:
-  push:
-    branches:
-      - main  # or 'master' depending on your default branch
-  pull_request:
-    branches:
-      - main  # or 'master'
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
+          
     steps:
       # Step 1: Check out the code from the repository
-      - name: Checkout repository
+      - name: Checkout repository   
         uses: actions/checkout@v3
-
+      
       # Step 2: Set up Docker
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
+        uses: docker/setup-buildx-action@v1  
+      
       # Step 3: Cache Docker layers to speed up build
       - name: Cache Docker layers
         uses: actions/cache@v3
@@ -29,30 +19,26 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
-
+          
       # Step 4: Build the Docker images (nginx and test)
       - name: Build Nginx Docker image
         run: |
           docker build -t nginx_image ./nginx
-
-      - name: Build Test Docker image
-        run: |
-          docker build -t test_image ./test
 
       # Step 5: Install Docker Compose
       - name: Install Docker Compose
         run: |
           sudo apt-get update
           sudo apt-get install -y docker-compose
-
-      # Step 6: Run the Nginx and test containers
-      - name: Run containers with Docker Compose
-        run: docker-compose up -d
-
-      # Step 7: Run tests (replace with your test commands)
-      - name: Run tests
+            
+      # Step 6: Run the Nginx container (test container won't be started)
+      - name: Run Nginx container
+        run: docker-compose up -d nginx_container
+      
+      # Step 7: Run tests in the nginx container 
+      - name: Run tests in Nginx container
         run: |
-          docker exec test_container python /app/test.py
+          docker exec nginx_container python /app/test.py 
 
       # Step 8: Check if tests passed and write result to an artifact
       - name: Check Test Results
@@ -61,7 +47,6 @@ jobs:
             echo "Tests passed!" && exit 0
           else
             echo "Tests failed!" && exit 1
-          fi
 
       # Step 9: Upload result file (succeeded or fail) as an artifact
       - name: Upload test result

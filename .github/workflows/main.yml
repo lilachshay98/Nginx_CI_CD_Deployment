@@ -3,10 +3,10 @@ name: Docker Build and Test
 on:
   push:
     branches:
-      - main # or 'master' depending on your default branch
+      - main  # or 'master' depending on your default branch
   pull_request:
     branches:
-      - main # or 'master'
+      - main  # or 'master'
 
 jobs:
   build:
@@ -34,21 +34,20 @@ jobs:
       - name: Build Nginx Docker image
         run: |
           docker build -t nginx_image ./nginx
-          
+
       - name: Build Test Docker image
         run: |
           docker build -t test_image ./test
 
       # Step 5: Install Docker Compose
       - name: Install Docker Compose
-	run: |
+        run: |
           sudo apt-get update
           sudo apt-get install -y docker-compose
 
       # Step 6: Run the Nginx and test containers
-      - name: Run containers and test
-        run: |
-          docker-compose up -d
+      - name: Run containers with Docker Compose
+        run: docker-compose up -d
 
       # Step 7: Run tests (replace with your test commands)
       - name: Run tests
@@ -69,5 +68,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-result
-          path: /output/succeeded # or /output/fail
+          path: /output/succeeded  # or /output/fail
 

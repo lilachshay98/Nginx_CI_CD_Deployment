@@ -60,7 +60,7 @@ jobs:
 
       # Step 8: Upload result file (succeeded or fail) as an artifact
       - name: Upload test result
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: test-result
           path: /output/succeeded # or /output/fail

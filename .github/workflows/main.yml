@@ -43,12 +43,7 @@ jobs:
             
       # Step 6: Run the Nginx container (test container won't be started)
       - name: Run Nginx container
-        run: docker-compose up -d nginx_container
-      
-      # Step 7: Run tests in the nginx container 
-      - name: Run tests in Nginx container
-        run: |
-          docker exec nginx_container python /app/test.py 
+        run: docker-compose up -d  
 
       # Step 8: Check if tests passed and write result to an artifact
       - name: Check Test Results

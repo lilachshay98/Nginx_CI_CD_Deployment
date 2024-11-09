@@ -2,16 +2,16 @@
 FROM python:3.9
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /app/tests
 
 # Copy the requirements.txt file into the container
-COPY requirements.txt /app/requirements.txt
+COPY . /app
 
 # Install dependencies from requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy the test script into the container
 COPY test.py /app/test.py
 
 # Run the test script
-CMD ["python", "/app/test.py"]
+CMD ["sh", "-c", "pytest -s test_login.py --env=stag && pytest -s test_send_ecard.py --env=stag"] 

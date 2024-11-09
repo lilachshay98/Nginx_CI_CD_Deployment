@@ -2,7 +2,7 @@
 FROM python:3.9
 
 # Set the working directory inside the container
-WORKDIR /app/tests
+WORKDIR /app
 
 # Copy the requirements.txt file into the container
 COPY . /app

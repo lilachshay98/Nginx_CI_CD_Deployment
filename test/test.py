@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 # constants
-SERVER1_TITLE = "Welcome!"
+# SERVER1_TITLE = "Welcome!"
+SERVER1_TITLE = "gibrish"
 SERVER1_BODY = "Hooray! You have successfully reached server 1"
 SERVER2_TITLE = "Page Not Found"
 SERVER2_BODY = "Oops! The page you are looking for could not be found on Server 2"

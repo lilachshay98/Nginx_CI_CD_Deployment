@@ -10,7 +10,7 @@ SERVER2_BODY = "Oops! The page you are looking for could not be found on Server 
 
 def check_server(url, expected_status, expected_title=None, expected_body_text=None):
     """
-    A general test for the server which checks if the server responds with the expected
+    A general test for each server which checks if it responds with the expected
     status, title, and body text.
     Parameters:
     - url (str): The URL to check.
@@ -40,6 +40,8 @@ def check_server(url, expected_status, expected_title=None, expected_body_text=N
 
         print(f"{url} passed.")
         return True
+
+    # I wanted to catch these possible exceptions, so that my program won't crash
     except (AssertionError, requests.exceptions.RequestException) as e:
         print(f"{url} failed: {e}")
         return False
@@ -60,6 +62,8 @@ def check_response_time(url, max_response_time=1):
         response = requests.get(url, timeout=max_response_time)
         print(f"{url} responded in {response.elapsed.total_seconds()} seconds.")
         return True
+
+    # I wanted to catch this possible exception, so that my program won't crash
     except requests.exceptions.Timeout:
         # If the server did not respond within the timeout, print an error message
         print(f"{url} failed due to timeout (>{max_response_time} seconds).")

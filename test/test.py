@@ -15,11 +15,27 @@ def check_server(url, expected_status, expected_text=None):
         return False
 
 
+def check_response_time(url, max_response_time=1):
+    try:
+        # Send a request to the server with a specified timeout (default unless specified)
+        response = requests.get(url, timeout=max_response_time)
+        print(f"{url} responded in {response.elapsed.total_seconds()} seconds.")
+        return True
+    except requests.exceptions.Timeout:
+        # If the server did not respond within the timeout, print an error message
+        print(f"{url} failed due to timeout (>{max_response_time} seconds).")
+        return False
+
+
 def main():
-    server1 = check_server("http://nginx_container:8080", 200, "Welcome to Server 1")
-    server2 = check_server("http://nginx_container:8081", 404, "Page Not Found")
+    server1_status_text = check_server("http://nginx_container:8080", 200, "Welcome to Server 1")
+    server1_response_time = check_response_time("http://nginx_container:8080")
+    server2_status_text = check_server("http://nginx_container:8081", 404, "Page Not Found")
+    server2_response_time = check_response_time("http://nginx_container:8081")
+
+    all_tests_passed = all([server1_status_text, server1_response_time, server2_status_text, server2_response_time])
     
-    if server1 and server2:
+    if all_tests_passed:
         with open("/output/succeeded", "w") as f:
             f.write("succeeded")
     else:

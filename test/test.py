@@ -2,16 +2,16 @@ import requests
 from bs4 import BeautifulSoup
 
 # constants
-SERVER1_TITLE = "Welcome to Server 1"
-SERVER1_BODY = "This is a custom HTML response for server 1"
+SERVER1_TITLE = "Welcome!"
+SERVER1_BODY = "Hooray! You have successfully reached server 1"
 SERVER2_TITLE = "Page Not Found"
 SERVER2_BODY = "Oops! The page you are looking for could not be found on Server 2"
 
 
 def check_server(url, expected_status, expected_title=None, expected_body_text=None):
     """
-    Checks if the server responds with the expected status, title, and body text.
-
+    A general test for the server which checks if the server responds with the expected
+    status, title, and body text.
     Parameters:
     - url (str): The URL to check.
     - expected_status (int): The expected HTTP status code.
@@ -44,23 +44,10 @@ def check_server(url, expected_status, expected_title=None, expected_body_text=N
         print(f"{url} failed: {e}")
         return False
 
-# def check_server(url, expected_status, expected_text=None):
-#     try:
-#         response = requests.get(url)
-#         assert response.status_code == expected_status
-#         if expected_text:
-#             assert expected_text in response.text
-#         print(f"{url} passed.")
-#         return True
-#     except AssertionError:
-#         print(f"{url} failed.")
-#         return False
-
 
 def check_response_time(url, max_response_time=1):
     """
-        Check if the server at the given URL responds within the specified time limit.
-
+        Checks if the server at the given URL responds within the specified time limit.
         Parameters:
         - url (str): The URL of the server to check.
         - max_response_time (float): The maximum allowed response time in seconds.

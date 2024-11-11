@@ -42,12 +42,12 @@ jobs:
       # Step 5: Build and tag the Docker images (nginx and test)
       - name: Build Nginx Docker image
         run: |
-          docker build -t ghcr.io/lilachshay98/f5_assignment/nginx_image:latest1 ./nginx
+          docker build -t ghcr.io/lilachshay98/nginx:2
 
       # Step 6: Build the Test Docker image
       - name: Build Test Docker image
         run: |
-          docker build -t ghcr.io/lilachshay98/f5_assignment/test_image:latest1 ./test
+          docker build -t ghcr.io/lilachshay98/test:2
 
       # Step 7: Install Docker Compose
       - name: Install Docker Compose

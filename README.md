@@ -21,7 +21,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 * Docker installed on your machine
 * Docker Compose installed on your machine
-* GitHub account for accessing Docker images (optional)
 
 ### Getting Started
 

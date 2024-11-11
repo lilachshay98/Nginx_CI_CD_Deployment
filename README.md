@@ -25,6 +25,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Getting Started
 
 1. Clone the Repository
+   
 Clone this repository to your local machine using the following command:
 
   ```
@@ -32,6 +33,7 @@ Clone this repository to your local machine using the following command:
   ```
 
 2. Set up the Docker Images
+   
 The project already includes Docker images for the Nginx server and Test application in GitHub Container Registry. However, you can build them locally if needed:
   
   ```
@@ -57,12 +59,12 @@ The project already includes Docker images for the Nginx server and Test applica
 
 5. Verify the Nginx Server and Test Results
 
-  * The Nginx server will be running on the port:
+  * The Nginx server will be running on the ports:
     8080 
     8081 
     You can access the server by visiting http://localhost:8080 and http://localhost:8081 in your browser.
 
-  * The Test application will run a series of tests against the Nginx server to ensure that it is functioning correctly. The results will be saved in the ./output directory.
+  * The Test application will run a series of tests against the Nginx server to ensure that it is functioning correctly. The results will be saved in the ./output directory and will be published to an artifact.
 
 
 6. Stopping the Application

@@ -1,7 +1,8 @@
 # version: '3'
 services:
   nginx_container:
-    image: ghcr.io/lilachshay98/f5_assignment/nginx_image:latest1
+    image: nginx:2
+    # image: ghcr.io/lilachshay98/f5_assignment/nginx_image:latest1
     ports:
       - "8080:8080"
       - "8081:8081"
@@ -10,7 +11,8 @@ services:
     container_name: nginx_container
 
   test_container:
-    image: ghcr.io/lilachshay98/f5_assignment/test_image:latest1
+    image: test:2
+    # image: ghcr.io/lilachshay98/f5_assignment/test_image:latest1
     depends_on:
       - nginx_container
     volumes:

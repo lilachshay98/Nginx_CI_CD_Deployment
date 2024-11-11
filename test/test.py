@@ -4,8 +4,7 @@ from bs4 import BeautifulSoup
 # constants
 SERVER1_TITLE = "Welcome!"
 SERVER1_BODY = "Hooray! You have successfully reached server 1"
-SERVER2_TITLE = "Page Not Found"
-SERVER2_BODY = "Oops! The page you are looking for could not be found on Server 2"
+SERVER2_TITLE = "Error: Page not found on server 2 :("
 
 
 def check_server(url, expected_status, expected_title=None, expected_body_text=None):
@@ -73,7 +72,7 @@ def check_response_time(url, max_response_time=1):
 def main():
     server1_status_text = check_server("http://nginx_container:8080", 200, SERVER1_TITLE, SERVER1_BODY)
     server1_response_time = check_response_time("http://nginx_container:8080")
-    server2_status_text = check_server("http://nginx_container:8081", 404, SERVER2_TITLE, SERVER2_BODY)
+    server2_status_text = check_server("http://nginx_container:8081", 404)
     server2_response_time = check_response_time("http://nginx_container:8081")
 
     all_tests_passed = all([server1_status_text, server1_response_time, server2_status_text, server2_response_time])

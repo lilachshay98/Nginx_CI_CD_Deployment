@@ -1,10 +1,10 @@
-# version: '3'
+version: '3'
 services:
   nginx_container:
     image: ghcr.io/lilachshay98/nginx:2
     ports:
-      - "8080:8080"
-      - "8081:8081"
+      - 8080:8080
+      - 8081:8081
     networks:
       - test-network
     container_name: nginx_container

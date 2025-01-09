@@ -1,4 +1,4 @@
-  # F5 Assignment
+  # Nginx CI/CD Deployment
 
 This project is a containerized application using Docker and Docker Compose to build and run an Nginx server and a test application. 
 The test application is specifically designed to test the functionality of the Nginx server. The application is deployed using GitHub Actions and 

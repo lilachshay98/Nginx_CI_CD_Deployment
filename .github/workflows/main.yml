@@ -71,7 +71,7 @@ jobs:
 
       # Step 10: Upload result file (succeeded or fail) as an artifact
       - name: Upload test result
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: test-result
           path: ./output

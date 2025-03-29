@@ -88,10 +88,6 @@ The project already includes Docker images for the Nginx server and Test applica
   8. Upload Test Results: Upload the test results as an artifact for review.
 
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * Docker and Docker Compose for containerization and orchestration.

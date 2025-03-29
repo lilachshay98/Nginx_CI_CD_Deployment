@@ -11,7 +11,7 @@ COPY . /app
 RUN pip install -r requirements.txt
 
 # Copy the test script into the container
-COPY test.py /app/test.py
+# COPY test.py /app/test.py
 
 # Set the command to run the test script
 CMD ["python", "test.py"]
